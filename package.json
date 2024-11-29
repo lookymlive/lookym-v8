@@ -12,6 +12,7 @@
     "@types/debounce": "^1.2.4",
     "appwrite": "^16.0.2",
     "autoprefixer": "^10.4.20",
+    "canvas": "^3.0.0-rc2",
     "debounce": "^2.2.0",
     "image-js": "^0.35.6",
     "moment": "^2.30.1",
