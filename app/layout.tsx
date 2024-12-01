@@ -1,25 +1,47 @@
-import UserProvider from './context/user'
+import UserProvider from '@/app/context/user'
 import AllOverlays from "@/app/components/AllOverlays"
-import './globals.css'
+import '@/app/globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'TikTok Clone',
-  description: 'TikTok Clone',
+  title: {
+    default: 'LookyM - Share Your Moments',
+    template: '%s | LookyM'
+  },
+  description: 'Share and discover amazing moments with LookyM',
+  keywords: ['social media', 'video sharing', 'moments', 'social network'],
+  authors: [{ name: 'LookyM Team' }],
+  creator: 'LookyM',
+  metadataBase: new URL('http://localhost:3000'),
+  openGraph: {
+    title: 'LookyM - Share Your Moments',
+    description: 'Share and discover amazing moments with LookyM',
+    url: 'http://localhost:3000',
+    siteName: 'LookyM',
+    locale: 'en_US',
+    type: 'website',
+  },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+}
+
+interface RootLayoutProps {
+  children: React.ReactNode
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <UserProvider>
-
-
-        <body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen bg-background antialiased">
+        <UserProvider>
           <AllOverlays />
           {children}
-        </body>
-
-      </UserProvider>
+        </UserProvider>
+      </body>
     </html>
   )
 }
